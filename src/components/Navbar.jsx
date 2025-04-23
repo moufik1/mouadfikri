@@ -37,7 +37,7 @@ const Navbar = () => {
             className="flex-shrink-0"
           >
             <h1 className="text-3xl font-extrabold">
-              <a href='#home' className="relative group">
+              <a href="#home" className="relative group">
                 <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Mouad Fikri
                 </span>
@@ -45,7 +45,7 @@ const Navbar = () => {
               </a>
             </h1>
           </motion.div>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
             {menuItems.map((item) => (
@@ -94,15 +94,20 @@ const Navbar = () => {
             >
               <div className="px-2 py-3 space-y-1">
                 {menuItems.map((item) => (
-                  <motion.a
+                  <motion.button
                     key={item.id}
-                    href={`#${item.id}`}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setTimeout(() => {
+                        const section = document.getElementById(item.id);
+                        section?.scrollIntoView({ behavior: 'smooth' });
+                      }, 150);
+                    }}
                     whileHover={{ x: 10 }}
-                    className="block px-4 py-2 text-base font-medium text-white rounded-lg hover:bg-blue-500/20"
-                    onClick={() => setIsMenuOpen(false)}
+                    className="w-full text-left block px-4 py-2 text-base font-medium text-white rounded-lg hover:bg-blue-500/20"
                   >
                     {item.label}
-                  </motion.a>
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
