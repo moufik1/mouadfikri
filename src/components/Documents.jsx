@@ -38,7 +38,7 @@ const Documents = () => {
       description: 'Collection of professional certifications',
       type: 'PDF',
       downloadUrl: '/documents/Certifications.pdf',
-      icon: '📚',
+      icon: '📑',
       color: 'from-yellow-500 to-red-600'
     }
   ];
