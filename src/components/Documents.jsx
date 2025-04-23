@@ -44,19 +44,22 @@ const Documents = () => {
   ];
 
   const handleDownload = (downloadUrl, title, type) => {
-    // Create a link element
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    // Use the correct file extension based on type
-    const extension = type.toLowerCase();
-    link.setAttribute('download', `${title.toLowerCase()}.${extension}`);
-    
-    // Append to the document and trigger click
-    document.body.appendChild(link);
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+    if (isMobile) {
+      // Mobile: open in a new tab
+      window.open(downloadUrl, '_blank');
+    } else {
+      // Desktop: force download
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      const extension = type.toLowerCase();
+      const filename = title.toLowerCase().replace(/\s+/g, '_');
+      link.setAttribute('download', `${filename}.${extension}`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   return (
