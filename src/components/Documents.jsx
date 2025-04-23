@@ -10,7 +10,7 @@ const Documents = () => {
       title: 'Resume',
       description: 'My professional resume detailing work experience and skills',
       type: 'PDF',
-      downloadUrl: 'documents/resume.pdf',
+      downloadUrl: '/documents/resume.pdf',  // Added leading slash for consistency
       icon: '📄',
       color: 'from-blue-500 to-cyan-500'
     },
@@ -43,8 +43,34 @@ const Documents = () => {
     }
   ];
 
-  const handleDownload = (url) => {
-    window.open(url, '_blank');
+  const handleDownload = async (url) => {
+    try {
+      // Get the base URL for production
+      const baseUrl = window.location.origin;
+      const fullUrl = `${baseUrl}${url}`;
+
+      // For mobile devices
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        window.location.href = fullUrl;
+        return;
+      }
+
+      // For desktop browsers
+      const response = await fetch(fullUrl);
+      const blob = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = url.split('/').pop(); // Get filename from URL
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      console.error('Download failed:', error);
+      // Fallback to direct navigation
+      window.location.href = url;
+    }
   };
 
   return (
@@ -109,8 +135,13 @@ const Documents = () => {
                   </span>
                   <button
                     onClick={() => handleDownload(doc.downloadUrl)}
+                    onTouchStart={(e) => {
+                      e.preventDefault();
+                      handleDownload(doc.downloadUrl);
+                    }}
                     className={`relative z-10 bg-gradient-to-r ${doc.color} px-4 py-2 rounded-xl 
-                      flex items-center gap-2 text-sm font-medium shadow-lg`}
+                      flex items-center gap-2 text-sm font-medium shadow-lg 
+                      active:scale-95 transition-transform duration-150`}
                   >
                     <span>Download</span>
                     <svg
