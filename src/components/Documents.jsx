@@ -17,7 +17,7 @@ const Documents = () => {
     {
       id: 2,
       title: 'Academic Education',
-      description: 'Bachelor\'s Degree and Diplomas',
+      description: "Bachelor's Degree and Diplomas",
       type: 'PDF',
       downloadUrl: '/documents/Academic_Education.pdf',
       icon: '🎓',
@@ -35,31 +35,16 @@ const Documents = () => {
     {
       id: 4,
       title: 'Deutsch Zertifikat',
-      description: 'Collection of professional certifications',
+      description: 'German language certification',
       type: 'PDF',
-      downloadUrl: '/documents/Certifications.pdf',
+      downloadUrl: '/documents/Deutsch_Zertifikat.pdf',
       icon: '📑',
       color: 'from-yellow-500 to-red-600'
     }
   ];
 
-  const handleDownload = (downloadUrl, title, type) => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  
-    if (isMobile) {
-      // Mobile: open in a new tab
-      window.open(downloadUrl, '_blank');
-    } else {
-      // Desktop: force download
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      const extension = type.toLowerCase();
-      const filename = title.toLowerCase().replace(/\s+/g, '_');
-      link.setAttribute('download', `${filename}.${extension}`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+  const handleDownload = (url) => {
+    window.open(url, '_blank');
   };
 
   return (
@@ -101,7 +86,7 @@ const Documents = () => {
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${doc.color} opacity-0 
                   group-hover:opacity-10 transition-opacity duration-300`} />
-                
+
                 <motion.div
                   initial={{ scale: 1 }}
                   animate={{ scale: hoveredDoc === doc.id ? 1.1 : 1 }}
@@ -122,26 +107,26 @@ const Documents = () => {
                     bg-opacity-10 text-white`}>
                     {doc.type}
                   </span>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => handleDownload(doc.downloadUrl, doc.title, doc.type)}
-                    className={`bg-gradient-to-r ${doc.color} px-4 py-2 rounded-xl 
+                  <button
+                    onClick={() => handleDownload(doc.downloadUrl)}
+                    className={`relative z-10 bg-gradient-to-r ${doc.color} px-4 py-2 rounded-xl 
                       flex items-center gap-2 text-sm font-medium shadow-lg`}
                   >
                     <span>Download</span>
-                    <motion.svg
+                    <svg
                       className="w-4 h-4"
-                      initial={{ y: 0 }}
-                      animate={{ y: hoveredDoc === doc.id ? 2 : 0 }}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </motion.svg>
-                  </motion.button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </motion.div>
             </motion.div>
