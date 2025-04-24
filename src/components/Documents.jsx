@@ -10,7 +10,7 @@ const Documents = () => {
       title: 'Resume',
       description: 'My professional resume detailing work experience and skills',
       type: 'PDF',
-      downloadUrl: '/documents/resume.pdf',  // Added leading slash for consistency
+      downloadUrl: '/documents/Lebenslauf.pdf',  // Added leading slash for consistency
       icon: '📄',
       color: 'from-blue-500 to-cyan-500'
     },
