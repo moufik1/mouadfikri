@@ -8,7 +8,7 @@ const Contact = () => {
     email: '',
     message: ''
   });
-  const [status, setStatus] = useState(''); // Add this for status messages
+  const [status, setStatus] = useState(''); // Für Statusnachrichten
   const [focusedField, setFocusedField] = useState(null);
 
   const handleChange = (e) => {
@@ -25,14 +25,14 @@ const Contact = () => {
 
     try {
       const result = await emailjs.send(
-        'service_0q03r29', // Replace with your EmailJS service ID
-        'template_wyy8ne6', // Replace with your EmailJS template ID
+        'service_0q03r29', // Ersetzen Sie mit Ihrer EmailJS Service ID
+        'template_wyy8ne6', // Ersetzen Sie mit Ihrer EmailJS Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        'ePd44RxU0rFPAikcS' // Replace with your EmailJS public key
+        'ePd44RxU0rFPAikcS' // Ersetzen Sie mit Ihrem EmailJS Public Key
       );
 
       if (result.text === 'OK') {
@@ -40,48 +40,29 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Fehler:', error);
       setStatus('error');
     }
   };
 
-  // Add this near your submit button
+  // Funktion für den Button-Text
   const getSubmitButtonText = () => {
     switch (status) {
       case 'sending':
-        return 'Sending...';
+        return 'Wird gesendet...';
       case 'success':
-        return 'Message Sent!';
+        return 'Nachricht gesendet!';
       case 'error':
-        return 'Failed to Send';
+        return 'Fehler beim Senden';
       default:
-        return 'Send Message';
+        return 'Nachricht senden';
     }
   };
 
-  // Update the submit button in your JSX
-  <motion.button
-    type="submit"
-    whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
-    whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
-    disabled={status === 'sending'}
-    className={`w-full py-3 px-6 bg-gradient-to-r ${
-      status === 'success' 
-        ? 'from-green-500 to-green-600'
-        : status === 'error'
-        ? 'from-red-500 to-red-600'
-        : 'from-blue-500 to-purple-500'
-    } text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 
-    transition-all duration-300 shadow-lg shadow-blue-500/25 
-    ${status === 'sending' ? 'opacity-75 cursor-not-allowed' : ''}`}
-  >
-    {getSubmitButtonText()}
-  </motion.button>
-
   const contactInfo = [
-    { icon: '📧', label: 'Email', value: 'mouadfikri0@gmail.com', href: 'mouadfikri0@gmail.com' },
-    { icon: '📍', label: 'Location', value: 'Morocco, Settat' },
-    { icon: '📱', label: 'Phone', value: '+212 610883364', href: 'tel:+212 610883364' }
+    { icon: '📧', label: 'E-Mail', value: 'mouadfikri0@gmail.com', href: 'mailto:mouadfikri0@gmail.com' },
+    { icon: '📍', label: 'Standort', value: 'Marokko, Settat' },
+    { icon: '📱', label: 'Telefon', value: '+212 610883364', href: 'tel:+212610883364' }
   ];
 
   const socialLinks = [
@@ -115,8 +96,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
-      {/* Background Effects */}
+    <section id="kontakt" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
+      {/* Hintergrund-Effekte */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
@@ -130,9 +111,9 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-            Let's Connect
+            Kontakt
           </h2>
-          <p className="text-gray-400 text-lg">Have a project in mind? Let's bring it to life together.</p>
+          <p className="text-gray-400 text-lg">Du hast ein Problem zu lösen?</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -172,7 +153,7 @@ const Contact = () => {
 
             <div className="pt-8">
               <h3 className="text-xl font-semibold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-                Follow Me
+                Folgen Sie mir
               </h3>
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => (
@@ -217,7 +198,7 @@ const Contact = () => {
                     focusedField === field ? 'text-blue-400' : 'text-gray-400'
                   }`}
                 >
-                  {field.charAt(0).toUpperCase() + field.slice(1)}
+                  {field === 'name' ? 'Name' : field === 'email' ? 'E-Mail' : 'Nachricht'}
                 </label>
                 {field === 'message' ? (
                   <textarea
@@ -249,11 +230,20 @@ const Contact = () => {
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg shadow-blue-500/25"
+              whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
+              whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
+              disabled={status === 'sending'}
+              className={`w-full py-3 px-6 bg-gradient-to-r ${
+                status === 'success' 
+                  ? 'from-green-500 to-green-600'
+                  : status === 'error'
+                  ? 'from-red-500 to-red-600'
+                  : 'from-blue-500 to-purple-500'
+              } text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 
+              transition-all duration-300 shadow-lg shadow-blue-500/25 
+              ${status === 'sending' ? 'opacity-75 cursor-not-allowed' : ''}`}
             >
-              Send Message
+              {getSubmitButtonText()}
             </motion.button>
           </motion.form>
         </div>

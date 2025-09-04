@@ -41,7 +41,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
+    <section id="fähigkeiten" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -55,8 +55,8 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-            Skills & Expertise
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 p-2 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+          Fähigkeiten
           </h2>
         </motion.div>
 

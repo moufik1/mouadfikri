@@ -7,35 +7,35 @@ const Documents = () => {
   const documents = [
     {
       id: 1,
-      title: 'Resume',
-      description: 'My professional resume detailing work experience and skills',
+      title: 'Lebenslauf',
+      description: 'Mein professioneller Lebenslauf mit Arbeitserfahrung und Fähigkeiten',
       type: 'PDF',
-      downloadUrl: '/documents/Lebenslauf.pdf',  // Added leading slash for consistency
+      downloadUrl: '/documents/Lebenslauf.pdf',
       icon: '📄',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       id: 2,
-      title: 'Academic Education',
-      description: "Bachelor's Degree and Diplomas",
+      title: 'Akademische Ausbildung',
+      description: "Bachelor-Abschluss und Diplome",
       type: 'PDF',
-      downloadUrl: '/documents/Academic_Education.pdf',
+      downloadUrl: '/documents/Akademische_Ausbildung.pdf',
       icon: '🎓',
       color: 'from-purple-500 to-pink-500'
     },
     {
       id: 3,
-      title: 'Certifications',
-      description: 'Collection of professional certifications',
+      title: 'Zertifizierungen',
+      description: 'Sammlung meiner professionellen Zertifizierungen',
       type: 'PDF',
-      downloadUrl: '/documents/Certifications.pdf',
-      icon: '🎓',
+      downloadUrl: '/documents/Zertifizierungen.pdf',
+      icon: '🏆',
       color: 'from-amber-500 to-red-500'
     },
     {
       id: 4,
       title: 'Deutsch Zertifikat',
-      description: 'German language certification',
+      description: 'Mein Deutsch-Sprachzertifikat',
       type: 'PDF',
       downloadUrl: '/documents/Deutsch_Zertifikat.pdf',
       icon: '📑',
@@ -67,14 +67,14 @@ const Documents = () => {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
     } catch (error) {
-      console.error('Download failed:', error);
+      console.error('Download fehlgeschlagen:', error);
       // Fallback to direct navigation
       window.location.href = url;
     }
   };
 
   return (
-    <section id="documents" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
+    <section id="dokumente" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -89,9 +89,9 @@ const Documents = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-            Documents & Resources
+            Dokumente & Unterlagen
           </h2>
-          <p className="text-gray-400 text-lg">Access my professional documents and certifications</p>
+          <p className="text-gray-400 text-lg">Zugriff auf meine professionellen Dokumente und Zertifikate</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -143,7 +143,7 @@ const Documents = () => {
                       flex items-center gap-2 text-sm font-medium shadow-lg 
                       active:scale-95 transition-transform duration-150`}
                   >
-                    <span>Download</span>
+                    <span>Herunterladen</span>
                     <svg
                       className="w-4 h-4"
                       fill="none"

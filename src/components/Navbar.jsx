@@ -14,13 +14,13 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'documents', label: 'Documents' },
-    { id: 'contact', label: 'Contact' }
-  ];
+    { id: 'startseite', label: 'Startseite' },
+    { id: 'about', label: 'Über mich' },
+    { id: 'projekte', label: 'Projekte' },
+    { id: 'fähigkeiten', label: 'Fähigkeiten' },
+    { id: 'dokumente', label: 'Dokumente' },
+    { id: 'kontakt', label: 'Kontakt' }
+];
 
   return (
     <motion.nav
@@ -37,7 +37,7 @@ const Navbar = () => {
             className="flex-shrink-0"
           >
             <h1 className="text-3xl font-extrabold">
-              <a href="#home" className="relative group">
+              <a href="#startseite" className="relative group">
                 <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Mouad Fikri
                 </span>

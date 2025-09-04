@@ -4,48 +4,37 @@ import posSystemImage from '../assets/POS_System.jpeg';
 import coffeeReservation from '../assets/Coffe_Booking.jpeg';
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('alle');
 
   const projects = [
-    // {
-    //   id: 1,
-    //   title: 'E-Commerce Platform',
-    //   category: 'web',
-    //   description: 'A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.',
-    //   technologies: ['React', 'Node.js', 'MongoDB','Express'],
-    //   image: 'https://via.placeholder.com/600x400',
-    //   github: 'https://github.com/moufik1/GabbaStore',
-    //   live: 'https://example.com'
-    // },
     {
       id: 1,
-      title: 'Coffee Shop POS System',
+      title: 'Kaffeehaus Kassensystem',
       category: 'app',
-      description: 'A modern Point of Sale system designed for coffee shops, featuring order management, inventory tracking, and sales reporting. Built with a user-friendly interface for baristas.',
-      technologies: ['Pyhton', 'CustomerTkinter', 'SQL Lite'],
+      description: 'Ein modernes Point-of-Sale-System für Kaffeehäuser mit Bestellverwaltung, Inventarverfolgung und Verkaufsberichten. Entwickelt mit benutzerfreundlicher Oberfläche für Baristas.',
+      technologies: ['Python', 'CustomTkinter', 'SQL Lite'],
       image: posSystemImage,
       github: 'https://github.com/moufik1/coffee-pos',
       live: 'https://coffee-pos-demo.example.com'
     },
     {
       id: 2,
-      title: 'Coffee Shop Reservation System',
+      title: 'Kaffeehaus Reservierungssystem',
       category: 'web',
-      description: 'An intuitive web platform for coffee shop table reservations, featuring real-time availability, booking management, and automated confirmation system.',
-      technologies: ['Laravel', 'MySql', 'Tailwind CSS', 'EmailJS'],
-      image: coffeeReservation ,
+      description: 'Eine intuitive Webplattform für Tischreservierungen in Kaffeehäusern mit Echtzeit-Verfügbarkeit, Buchungsverwaltung und automatischem Bestätigungssystem.',
+      technologies: ['Laravel', 'MySQL', 'Tailwind CSS', 'EmailJS'],
+      image: coffeeReservation,
       github: 'https://github.com/moufik1/Openspacee',
       live: 'https://coffee-reservation.example.com'
     },
- 
   ];
 
   const filteredProjects = projects.filter(project => 
-    activeFilter === 'all' ? true : project.category === activeFilter
+    activeFilter === 'alle' ? true : project.category === activeFilter
   );
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-white">
+    <section id="projekte" className="py-24 bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -53,15 +42,15 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-            My Projects
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 p-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
+            Meine Projekte
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Explore my latest work and side projects
+            Entdecken Sie meine neuesten Arbeiten und Nebenprojekte
           </p>
           
           <div className="flex justify-center gap-4 mt-10">
-            {['all', 'web', 'app'].map((filter) => (
+            {['alle', 'web', 'app'].map((filter) => (
               <motion.button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
@@ -73,7 +62,7 @@ const Projects = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                {filter === 'alle' ? 'Alle' : filter === 'web' ? 'Web' : 'App'}
               </motion.button>
             ))}
           </div>
@@ -111,7 +100,7 @@ const Projects = () => {
                       {project.title}
                     </h3>
                     <span className="px-3 py-1 text-xs font-medium text-cyan-400 bg-cyan-400/10 rounded-full">
-                      {project.category}
+                      {project.category === 'web' ? 'Web' : 'App'}
                     </span>
                   </div>
 
@@ -140,7 +129,7 @@ const Projects = () => {
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" clipRule="evenodd" />
                       </svg>
-                      View Code
+                      Code ansehen
                     </a>
                     <a
                       href={project.live}

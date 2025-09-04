@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import profileImage from '../assets/1.png';
+import profileImage from '../assets/aboutt.png';
 
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center bg-[#0F172A] text-white relative overflow-hidden">
+    <section id="startseite" className="min-h-screen flex items-center bg-[#0F172A] text-white relative overflow-hidden">
       {/* Background gradient circles */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-[100px]" />
@@ -28,7 +28,7 @@ const Home = () => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-6 order-2 md:order-1"
           >
             <motion.div 
               initial={{ opacity: 0 }}
@@ -36,7 +36,7 @@ const Home = () => {
               transition={{ delay: 0.2 }}
               className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
             >
-              <h2 className="text-xl font-medium">Welcome to my portfolio</h2>
+              <h2 className="text-xl font-medium">Herzlich willkommen in meinem Portfolio</h2>
             </motion.div>
 
             <motion.div className="space-y-2">
@@ -51,22 +51,23 @@ const Home = () => {
               </motion.h1>
               
               <motion.h2 
-                className="text-2xl md:text-3xl text-gray-400"
-                {...fadeInUp}
-                transition={{ delay: 0.2 }}
-              >
-                Full Stack Developer & UI/UX Designer
-              </motion.h2>
-            </motion.div>
+  className="text-2xl md:text-3xl text-gray-400"
+  {...fadeInUp}
+  transition={{ delay: 0.2 }}
+>
+  Kaufmann im E-Commerce
+</motion.h2>
+</motion.div>
 
-            <motion.p 
-              className="text-gray-400 text-lg max-w-lg"
-              {...fadeInUp}
-              transition={{ delay: 0.3 }}
-            >
-              Crafting digital experiences with clean code and creative design. 
-              Specialized in building modern web applications that make an impact.
-            </motion.p>
+<motion.p 
+  className="text-gray-400 text-lg max-w-lg"
+  {...fadeInUp}
+  transition={{ delay: 0.3 }}
+>
+  Spezialisiert auf die Gestaltung digitaler Handelserlebnisse und Online-Shop-Systeme. 
+  Experte für E-Commerce-Plattformen, Online-Marketingstrategien und kundenorientierte 
+  Verkaufsprozesse im digitalen Handel.
+</motion.p>
 
             <motion.div 
               className="flex flex-wrap gap-4"
@@ -75,20 +76,20 @@ const Home = () => {
               transition={{ delay: 0.5 }}
             >
               <motion.a
-                href="#projects"
+                href="#projekte"
                 className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Projects
+                Projekte ansehen
               </motion.a>
               <motion.a
-                href="#contact"
+                href="#kontakt"
                 className="px-8 py-3 border border-blue-500 rounded-full font-medium hover:bg-blue-500/10 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact Me
+                Auf geht's!
               </motion.a>
             </motion.div>
 
@@ -136,13 +137,13 @@ const Home = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="hidden md:block"
+            className="block order-1 md:order-2 mt-8 md:mt-0"
           >
-            <div className="relative w-full h-[500px]">
+            <div className="relative w-full h-[220px] md:h-[500px]">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-[100px] opacity-20" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div 
-                  className="w-96 h-96 relative cursor-pointer"
+                  className="w-48 h-48 md:w-80 md:h-96 relative cursor-pointer"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
@@ -151,9 +152,14 @@ const Home = () => {
                     alt="Profile"
                     className="w-full h-full object-cover rounded-full border-4 border-blue-500/30"
                     style={{
-                      boxShadow: '0 0 60px rgba(59, 130, 246, 0.3)'
+                      boxShadow: '0 0 40px rgba(59, 130, 246, 0.4), 0 0 80px rgba(147, 51, 234, 0.3)',
+                      objectPosition: 'center 68%' /* Adjust this to control cropping position */
                     }}
-                    whileHover={{ rotate: 5 }}
+                    whileHover={{ 
+                      rotate: 3,
+                      boxShadow: '0 0 60px rgba(59, 130, 246, 0.6), 0 0 100px rgba(147, 51, 234, 0.4)'
+                    }}
+                    loading="eager"
                   />
                   <motion.div 
                     className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 pointer-events-none"

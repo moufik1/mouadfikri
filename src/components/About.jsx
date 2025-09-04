@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import AboutImg from "../assets/3.png"
 
 const About = () => {
   const fadeInUp = {
@@ -15,8 +16,15 @@ const About = () => {
     { name: 'Tools', items: ['Git', 'Wordpress', 'Figma'] }
   ];
 
+  const stats = [
+    { label: 'Years Experience', value: '2+' },
+    { label: 'Projects Completed', value: '2+' },
+    { label: 'Technologies', value: '7+' },
+    { label: 'Satisfied Clients', value: '2+' }
+  ];
+
   return (
-    <section id="about" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
+    <section id="about" className="py-22 bg-[#0F172A] text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -30,12 +38,12 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.h2 
+          <motion.h2
             className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
           >
-            About Me
+            Über Mich
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
@@ -43,7 +51,7 @@ const About = () => {
           />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center min-h-[500px]">
           {/* Left Column - About Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -53,90 +61,49 @@ const About = () => {
           >
             <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10">
               <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-                My Journey
+                Über Mich
               </h3>
               <div className="space-y-4 text-gray-300">
-                <p>
-                  Driven by my passion for web development, I am actively seeking an Ausbildung as a 
-                  Fachinformatiker für Anwendungsentwicklung in Germany. My goal is to combine hands-on 
-                  experience with structured learning while contributing to Germany's innovative tech sector.
-                </p>
-                <p>
-                  With a strong foundation in modern web technologies and a dedication to clean code,
-                  I am eager to combine practical work experience with structured learning through 
-                  the German dual education system.
-                </p>
+              <p>
+                Getrieben von meiner Leidenschaft für ansprechende und benutzerfreundliche Web-Erlebnisse,
+                bin ich ein <strong className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">Anfänger Frontend-Entwickler</strong>, der darauf brennt, zu lernen und zu wachsen.
+                Ich bin bestrebt, eine solide Grundlage in modernen Web-Technologien aufzubauen und innovative Ideen durch Code zum Leben zu erwecken.
+              </p>
+              <p>
+                Mit einer soliden Grundlage in modernen Web-Technologien und einer Hingabe für sauberen Code,
+                strebe ich danach, praktische Berufserfahrung mit strukturiertem Lernen durch
+                das deutsche duale Ausbildungssystem zu verbinden.
+              </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column - Skills Grid */}
+          {/* Right Column - Picture */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
+            className="flex justify-center items-center p-4 w-full max-w-md mx-auto"
           >
-            {skills.map((category, index) => (
-              <motion.div
-                key={category.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white/5 backdrop-blur-xl rounded-xl p-6 border border-white/10"
-              >
-                <h4 className="text-lg font-semibold mb-3 text-blue-400">
-                  {category.name}
-                </h4>
-                <ul className="space-y-2">
-                  {category.items.map((item, i) => (
-                    <motion.li
-                      key={item}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: (index * 0.1) + (i * 0.05) }}
-                      className="text-gray-300 flex items-center"
-                    >
-                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div 
+            className="relative w-full h-64 md:h-80 lg:h-96 rounded-full overflow-hidden shadow-lg"
+            style={{
+              boxShadow: '0 0 40px rgba(59, 130, 246, 0.4), 0 0 80px rgba(147, 51, 234, 0.3)',
+            }}
+          >
+            <img
+              src={AboutImg}
+              alt="About me"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'center 60%' }}
+            />
+          </div>
+        </motion.div>
+
         </div>
 
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {[
-            { label: 'Years Experience', value: '2+' },
-            { label: 'Projects Completed', value: '2+' },
-            { label: 'Technologies', value: '7+' },
-            { label: 'Satisfied Clients', value: '2+' }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white/5 backdrop-blur-xl rounded-xl p-6 text-center border border-white/10"
-            >
-              <div className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-                {stat.value}
-              </div>
-              <div className="text-gray-400 mt-1">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Stats Section */}
+        
       </div>
     </section>
   );
